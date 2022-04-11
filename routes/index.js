@@ -12,7 +12,7 @@ router.get('/blog', maincontroller.blog_get);
 
 router.get('/blog/:id', maincontroller.blog_id_get);
 
-router.post('/blog/:id', maincontroller.blog_id_comment_post);
+router.post('/blog/:id', passport.authenticate('jwt', {session: false}), maincontroller.blog_id_comment_post);
 
 //Blog Owner Website
 router.post('/blog_create', passport.authenticate('jwt', {session: false}), maincontroller.blog_create);

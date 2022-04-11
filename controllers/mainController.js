@@ -44,7 +44,7 @@ exports.blog_id_get = (req, res, next) => {
             return next(err);
         }
 
-        return res.send(`${results.blog} ${results.comment}`)
+        return res.send(results)
     })
 }
 
@@ -80,8 +80,8 @@ exports.blog_id_comment_post = [
 ]
 
 exports.blog_create = [
-    body('title', 'Title must not be empty').trim().isLength({ min: 1 }).escape(),
-    body('content', 'Content must not be empty').trim().isLength({ min: 1 }).escape(),
+    body('title', 'Title must not be empty').trim().isLength({ min: 1 }),
+    body('content', 'Content must not be empty').trim().isLength({ min: 1 }),
     
 
     (req, res, next) => {
